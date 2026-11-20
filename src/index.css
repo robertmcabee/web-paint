@@ -1,1 +1,151 @@
-@import "tailwindcss";
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  font-family: Tahoma, Verdana, sans-serif;
+  color: #20252a;
+  background: #284a4d;
+}
+
+#root {
+  width: 100%;
+  max-width: 1120px;
+}
+
+main {
+  --raised: inset 2px 2px white, inset -2px -2px #737a77;
+  --pressed: inset 2px 2px #747b78, inset -2px -2px #f4f5ef;
+  padding: 5px;
+  background: #dadbd5;
+}
+
+h1 {
+  margin: 0;
+  padding: 9px 13px;
+  font-size: 16px;
+  color: white;
+  background: #203450;
+}
+
+.editor {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 8px;
+  padding: 8px 0;
+}
+
+.tools {
+  display: grid;
+  align-content: start;
+  gap: 5px;
+}
+
+button {
+  border: 0;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.tools button {
+  display: grid;
+  place-items: center;
+  gap: 5px;
+  width: 68px;
+  min-height: 56px;
+  font-size: 14px;
+  background: #dadbd5;
+  box-shadow: var(--raised);
+}
+
+.tools button.selected {
+  background: #b8ccd0;
+  box-shadow: var(--pressed);
+}
+
+.pencil-icon,
+.eraser-icon {
+  width: 20px;
+  height: 10px;
+  transform: rotate(-38deg);
+}
+
+.pencil-icon {
+  background: linear-gradient(90deg, #304052 18%, #dbc29f 18% 33%, #bd873b 33% 80%, #a76272 80%);
+  clip-path: polygon(0 50%, 30% 10%, 100% 10%, 100% 90%, 30% 90%);
+}
+
+.eraser-icon {
+  border: 1px solid #564257;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #e6dcce 35%, #c67f96 35%);
+}
+
+.workspace {
+  padding: 5px;
+  background: #a7ada9;
+  box-shadow: var(--pressed);
+}
+
+canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: white;
+  cursor: crosshair;
+  touch-action: none;
+}
+
+canvas.eraser {
+  cursor: cell;
+}
+
+.color-bar,
+.color-bar label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.color-bar {
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 9px;
+  box-shadow: var(--raised);
+}
+
+.color-picker input {
+  width: 34px;
+  height: 32px;
+  padding: 4px;
+  border: 0;
+  box-shadow: var(--pressed);
+  cursor: pointer;
+}
+
+.palette {
+  display: grid;
+  grid-template-columns: repeat(8, 24px);
+  gap: 3px;
+}
+
+.palette button {
+  height: 24px;
+  box-shadow: var(--pressed);
+}
+
+.palette button.selected {
+  box-shadow: inset 0 0 0 2px #20252a, inset 0 0 0 4px white;
+}
+
+input[type="range"] {
+  width: 112px;
+  accent-color: #365e75;
+}
